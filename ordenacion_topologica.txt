@@ -1,0 +1,28 @@
+Especificaciones del Algoritmo Ordenación Topológica
+Propósito: Realizar una ordenación topológica de las tareas cumpliendo las restricciones de precedencia definidas entre ellas.
+
+Entradas:
+n: Número total de tareas.
+restricciones: Lista de pares (i, j) indicando que la tarea i debe ser completada antes de que comience la tarea j.
+
+Salida:
+orden: Lista que contiene la ordenación topológica de las tareas si es posible. En caso de que no sea posible cumplir todas las restricciones, se devuelve None.
+
+Variables:
+grado_entrada: Diccionario que almacena el grado de entrada de cada tarea.
+dependencias: Diccionario que almacena las tareas dependientes de cada tarea.
+tareas_sin_dependencias: Lista para almacenar las tareas sin dependencias.
+orden: Lista para almacenar el orden topológico resultante.
+
+Pasos:
+Inicializar grado_entrada y dependencias.
+Calcular el grado de entrada y las dependencias de cada tarea según las restricciones.
+Inicializar la lista de tareas_sin_dependencias con las tareas que tienen grado de entrada igual a cero.
+Realizar la ordenación topológica:
+Extraer una tarea de tareas_sin_dependencias.
+Agregar la tarea al orden.
+Disminuir el grado de entrada de las tareas dependientes.
+Si el grado de entrada de una tarea dependiente llega a cero, agregarla a tareas_sin_dependencias.
+Verificar si todas las tareas fueron procesadas:
+Si la longitud de orden es menor que n, devolver None.
+En caso contrario, devolver orden.

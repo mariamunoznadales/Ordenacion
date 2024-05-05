@@ -1,0 +1,23 @@
+Especificaciones del Algoritmo esta_explorado
+
+Propósito: Explorar un segmento de una lista moviendo sus elementos una posición hacia la izquierda y colocando el elemento más grande en la posición final del segmento.
+
+Entradas:
+t: Lista que contiene los elementos.
+inicio: Índice que indica el inicio del segmento a explorar.
+fin: Índice que indica el final del segmento a explorar.
+
+Salida:
+explorado: Booleano que indica si el segmento ha sido explorado correctamente.
+
+Variables:
+m: Variable que almacena una copia de seguridad del máximo del segmento.
+
+Precondiciones:
+inicio y fin deben ser índices válidos dentro de la lista t.
+inicio debe ser menor o igual que fin.
+
+Postcondiciones:
+Si los índices de entrada son inválidos, la función devuelve False.
+Si los índices son válidos, la función mueve los elementos del segmento una posición hacia la izquierda y coloca el elemento más grande en la posición fin.
+La función devuelve True si el segmento ha sido explorado correctamente.

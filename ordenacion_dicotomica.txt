@@ -1,0 +1,91 @@
+Ordenación por inserción dicotómica. 
+Sea t una tabla de una sola línea donde los componentes son de tipo  
+T->COMPARABLE. 
+
+
+1. Escribir primero las especificaciones del algoritmo que no usa la ayuda de otra tabla para calcular su resultado. 
+
+El objetivo es ordenar la tabla 't' sin utilizar otra tabla auxiliar, lo que implica que la misma tabla 't' será modificada en su disposición de elementos. El algoritmo buscado es un procedimiento que altera los datos originales.
+No obstante, hay que asegurarse de que en la tabla 't' estén todos los elementos originales y exclusivamente esos, aunque puedan estar en celdas diferentes. 
+Sea este algoritmo orden_dicotómico_1. Su especificación es: 
+Algoritmo 1: Orden dicotómico de la tabla «en su lugar» – Especificaciones 
+
+Algoritmo orden_dicotómico_1 
+ 	# Ordenar `t[inicio..fin]' «en su lugar» en orden creciente. 
+  
+Entrada 
+ 	t : TABLA[T → COMPARABLE]	# La tabla a ordenar 
+ 	inicio, fin : ENTERO		# Orden de t[inicio.. fin] 
+  
+precondición 
+ 	inicio ≤ fin 
+ 	índice_válido(t, inicio) ; índice_válido(t,fin) 
+ 	está_definida(t, inicio, fin) 
+  
+postcondición 
+ 	# `inicio' y `fin' no se modifican 
+ 	inicio = antiguo(inicio) ; fin = antiguo(fin) 
+ 	 
+	# La tabla `t[inicio..fin]' está ordenada en orden creciente 
+ 	esta_ordenada_en_orden_creciente(t, inicio, fin) 
+  
+	# Los elementos siguen siendo los mismos 
+ 	es_igual_a(t, inicio, fin, antiguo(t), inicio, fin) 
+  
+fin orden_dicotómico_1 
+
+El algoritmo toma una porción específica de una tabla, la ordena en orden creciente utilizando el método de inserción dicotómica, y garantiza que los índices y los elementos de la tabla no se vean afectados fuera de la porción especificada. 
+
+
+
+2. Desarrollar el análisis completo de la solución retenida.
+El algoritmo ordena una porción de una tabla t en su lugar en orden creciente. Tiene como propósito ordenar una porción de la tabla t en orden creciente, manteniendo los índices de inicio y fin sin modificaciones.
+
+Entradas:
+t: Una tabla que contiene elementos comparables.
+
+Inicio y fin: Índices que delimitan la porción de la tabla que se va a ordenar.
+
+Precondiciones:
+inicio debe ser menor o igual que fin.
+Los índices inicio y fin deben ser válidos para la tabla t.
+La porción de la tabla t delimitada por inicio y fin debe estar definida.
+
+Postcondiciones:
+Se especifica el estado deseado después de ejecutar el algoritmo:
+Los índices inicio y fin permanecen sin cambios.
+La porción de la tabla t delimitada por inicio y fin está ordenada en orden creciente.
+Los elementos en la porción de la tabla t no cambian después de la ordenación.
+
+
+
+3. Desarrollar este algoritmo nuevo. 
+
+Una segunda tabla se llena con los elementos de la tabla 't', pero esta vez están ordenados en forma creciente. 
+Esto implica que la ordenación se convierte en una función que produce y devuelve la segunda tabla ya ordenada. 
+Por ejemplo, abordar esto sería copiar o clonar la tabla 't' en la secundaria 'Resultado' y luego aplicar un proceso de ordenamiento a la tabla 'Resultado', como se describió anteriormente. 
+
+algoritmo orden_dicotómico_2 
+ 	# Ordena `t[inicio .. fin'] en orden creciente en Resultado. 
+  
+Entrada 
+ 	t : TABLA[T → COMPARABLE]	# La tabla a ordenar 
+ 	inicio, fin : ENTERO		# Ordenación de t[inicio.. fin] 
+  
+precondición 
+ 	... 
+  
+Resultado : TABLA[T → COMPARABLE][inicio]	# La tabla ordenada 
+  
+inicialización 
+ 	Resultado ← sub_tabla(t, inicio, fin) 
+  
+realización 
+ 	orden_dicotómico_1(Resultado, inicio, fin) 
+  
+postcondición 
+ 	... 
+  
+fin orden_dicotómico_2 
+
+El algoritmo sub_tabla toma una tabla original t y crea una nueva tabla que contiene una subsecuencia de elementos de t que están delimitados por los índices de inicio y fin especificados 
